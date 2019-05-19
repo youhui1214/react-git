@@ -5,7 +5,7 @@ class ItemList extends Component {
         super(props);
         this.state = {
             editing: false,  // 控制帖子
-            post: props.item
+            post: props.item  // 使用state来控制显示时，不使用props在render中控制，最好接受父组件更新值时使用componentWillReceiveProps
         }
     }
     
@@ -31,13 +31,11 @@ class ItemList extends Component {
     // 保存/编辑按钮点击逻辑
     handleEditPost = () => {
         const editing = this.state.editing;
-        
         if (editing) {
             this.props.onSave({
                 ...this.state.post
             })
         }
-        
         this.setState({
             editing: !editing
         })
@@ -45,6 +43,7 @@ class ItemList extends Component {
     
     render() {
         const {post} = this.state;
+        // const {post} = this.props;
         return (
             <li>
                 <div>

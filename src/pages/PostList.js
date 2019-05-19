@@ -22,6 +22,8 @@ class PostList extends Component {
     }
     
     _handelVote(id) {
+        console.log(this.state.list);
+        
         const newList = this.state.list.map((item) => {
             return item.id === id ? {...item, vote: ++item.vote} : item
         });
@@ -42,13 +44,15 @@ class PostList extends Component {
     }
     
     render() {
+        console.log('ggg');
+        console.log(this.state.list);
         return (
             <div>
                 <div>帖子列表：</div>
                 <ul>
                     {
                         this.state.list.map((item) => {
-                            return <ItemList onSave={this._handleSave} _handelVote={this._handelVote} key={item.id} item={item}/>
+                            return <ItemList onSave={this._handleSave} _handelVote={this._handelVote} post ={item} key={item.id} item={item}/>
                         })
                     }
                 </ul>
@@ -56,5 +60,4 @@ class PostList extends Component {
         )
     }
 }
-
 export default PostList;
