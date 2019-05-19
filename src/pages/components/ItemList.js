@@ -9,7 +9,7 @@ class ItemList extends Component {
         }
     }
     
-    componentWillReceiveProps(nextProps, nextContext) {
+    componentWillReceiveProps(nextProps) {
         // 父组件更新post后，更新子组件的state
         if (this.props.post !== nextProps.item) {
             this.setState({
