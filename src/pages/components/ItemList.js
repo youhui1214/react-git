@@ -17,7 +17,6 @@ class ItemList extends Component {
             })
         }
     }
-    
     handelVote = () => {
         this.props._handelVote(this.props.item.id)
     };
