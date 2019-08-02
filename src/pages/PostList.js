@@ -21,7 +21,7 @@ class PostList extends Component {
         })
     }
     _handelVote(id) {
-        console.log(20);
+        console.log(2000);
         const newList = this.state.list.map((item) => {
             return item.id === id ? {...item, vote: ++item.vote} : item
         });
