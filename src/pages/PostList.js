@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import axios from 'axios'
-import ItemList from './components/ItemList'
+import AxiosHttp from 'axios'
+import ItemList from './components/ItemList';
 
 
 class PostList extends Component {
@@ -14,14 +14,16 @@ class PostList extends Component {
     }
     
     componentDidMount() {
-        axios.get('https://www.easy-mock.com/mock/5cdd1e719bcfaf0b145465a1/test/list')
+        AxiosHttp.get('https://www.easy-mock.com/mock/5cdd1e719bcfaf0b145465a1/test/list')
         .then((res) => {
             const list = res.data.data.posts;
             this.setState({list})
         })
     }
+    
     _handelVote(id) {
         console.log(2000);
+        console.warn('cc');
         const newList = this.state.list.map((item) => {
             return item.id === id ? {...item, vote: ++item.vote} : item
         });
@@ -48,7 +50,8 @@ class PostList extends Component {
                 <ul>
                     {
                         this.state.list.map((item) => {
-                            return <ItemList onSave={this._handleSave} _handelVote={this._handelVote} post ={item} key={item.id} item={item}/>
+                            return <ItemList onSave={this._handleSave} _handelVote={this._handelVote} post={item}
+                                             key={item.id} item={item}/>
                         })
                     }
                 </ul>
@@ -56,4 +59,5 @@ class PostList extends Component {
         )
     }
 }
+
 export default PostList;
